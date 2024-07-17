@@ -18,6 +18,10 @@ security:
     main:
       lazy: true
       provider: app_user_provider
+      custom_authenticators:
+        - App\Security\AppCustomAuthenticator
+        - App\Security\GitHubAuthenticator
+      entry_point: App\Security\AppCustomAuthenticator
       form_login:
         login_path: app_login
         check_path: app_login
@@ -27,7 +31,6 @@ security:
         password_parameter: password
       logout:
         path: app_logout
-        # where to redirect after logout
         target: app_login
 
   # Easy way to control access for large sections of your site
@@ -35,6 +38,7 @@ security:
   access_control:
     - { path: ^/login, roles: PUBLIC_ACCESS }
     - { path: ^/register, roles: PUBLIC_ACCESS }
+    - { path: ^/connect/github, roles: PUBLIC_ACCESS }
     - { path: ^/, roles: ROLE_USER }
 
 when@test:

@@ -25,3 +25,9 @@ services:
   App\Service\JsonProductPersister:
     arguments:
       $projectDir: "%kernel.project_dir%"
+  App\Security\GitHubAuthenticator:
+    arguments:
+      $clientRegistry: "@knpu.oauth2.registry"
+      $entityManager: "@doctrine.orm.entity_manager"
+      $router: "@router"
+      $passwordHasher: "@security.user_password_hasher"
