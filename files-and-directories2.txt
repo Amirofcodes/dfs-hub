@@ -1,0 +1,74 @@
+.
+├── README.md
+├── bin
+│   └── console
+├── compose.override.yaml
+├── compose.yaml
+├── composer.json
+├── composer.lock
+├── config
+│   ├── bundles.php
+│   ├── packages
+│   │   ├── cache.yaml
+│   │   ├── doctrine.yaml
+│   │   ├── doctrine_migrations.yaml
+│   │   ├── framework.yaml
+│   │   ├── knpu_oauth2_client.yaml
+│   │   ├── routing.yaml
+│   │   ├── security.yaml
+│   │   ├── twig.yaml
+│   │   └── validator.yaml
+│   ├── preload.php
+│   ├── routes
+│   │   └── framework.yaml
+│   ├── routes.yaml
+│   └── services.yaml
+├ 
+├
+├── migrations
+│   └── Version20240717083724.php
+├── public
+│   └── index.php
+├── src
+│   ├── Controller
+│   │   ├── GitHubController.php
+│   │   ├── HomeController.php
+│   │   ├── ProductController.php
+│   │   ├── RegistrationController.php
+│   │   ├── SecurityController.php
+│   │   └── UserController.php
+│   ├── Entity
+│   │   ├── Product.php
+│   │   └── User.php
+│   ├── Form
+│   │   ├── ProductType.php
+│   │   └── RegistrationFormType.php
+│   ├── Kernel.php
+│   ├── Repository
+│   │   ├── ProductRepository.php
+│   │   └── UserRepository.php
+│   ├── Security
+│   │   ├── AppCustomAuthenticator.php
+│   │   └── GitHubAuthenticator.php
+│   └── Service
+│       └── JsonProductPersister.php
+├── symfony.lock
+├── templates
+│   ├── base.html.twig
+│   ├── home
+│   │   └── index.html.twig
+│   ├── partials
+│   │   └── _navbar.html.twig
+│   ├── product
+│   │   ├── index.html.twig
+│   │   └── new.html.twig
+│   ├── registration
+│   │   └── register.html.twig
+│   ├── security
+│   │   └── login.html.twig
+│   └── user
+│       └── index.html.twig
+├──var
+│   ├── log
+│   └── products.json
+
