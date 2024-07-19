@@ -19,12 +19,15 @@ Ce projet est un Système de Gestion de Produits construit avec Symfony 6. Il pe
 - Persistance des données :
   - Base de données MySQL pour les utilisateurs et les produits
   - Sauvegarde supplémentaire des produits dans un fichier JSON
+- Profil utilisateur :
+  - Page de profil affichant les informations de l'utilisateur
 
 ## Nouvelles Fonctionnalités
 
 - Intégration de l'authentification GitHub
 - Style cohérent pour les pages de connexion et d'inscription
-- Barre de navigation pour une navigation facile entre les pages
+- Barre de navigation adaptative pour une navigation facile entre les pages
+- Page d'accueil adaptative qui change en fonction de l'état de connexion de l'utilisateur
 
 ## Structure du Projet
 
@@ -40,7 +43,9 @@ productMng/
 │   │   ├── ProductController.php
 │   │   ├── RegistrationController.php
 │   │   ├── SecurityController.php
-│   │   └── GitHubController.php
+│   │   ├── GitHubController.php
+│   │   ├── HomeController.php
+│   │   └── UserController.php
 │   ├── Entity/
 │   │   ├── Product.php
 │   │   └── User.php
@@ -63,6 +68,10 @@ productMng/
 │   │   └── register.html.twig
 │   ├── security/
 │   │   └── login.html.twig
+│   ├── user/
+│   │   └── index.html.twig
+│   ├── home/
+│   │   └── index.html.twig
 │   ├── base.html.twig
 │   └── partials/
 │       └── _navbar.html.twig
@@ -75,7 +84,7 @@ productMng/
 1. **Entités** :
 
    - `Product.php` : Représente un produit avec ses propriétés.
-   - `User.php` : Représente un utilisateur du système, incluant maintenant un champ pour l'ID GitHub.
+   - `User.php` : Représente un utilisateur du système, incluant un champ pour l'ID GitHub.
 
 2. **Contrôleurs** :
 
@@ -83,6 +92,8 @@ productMng/
    - `RegistrationController.php` : Gère l'inscription des utilisateurs.
    - `SecurityController.php` : Gère la connexion et la déconnexion locales.
    - `GitHubController.php` : Gère le processus de connexion via GitHub.
+   - `HomeController.php` : Gère l'affichage de la page d'accueil.
+   - `UserController.php` : Gère l'affichage du profil utilisateur.
 
 3. **Formulaires** :
 
@@ -99,7 +110,7 @@ productMng/
    - `GitHubAuthenticator.php` : Gère le processus d'authentification via GitHub.
 
 6. **Templates** :
-   - Templates Twig pour le rendu des pages produits, connexion, inscription, et la barre de navigation.
+   - Templates Twig pour le rendu des pages produits, connexion, inscription, accueil, profil utilisateur et la barre de navigation.
 
 ## Configuration et Exécution du Projet
 
@@ -118,11 +129,13 @@ productMng/
 
 ## Utilisation
 
-1. Inscrivez-vous en utilisant l'inscription locale ou via GitHub.
-2. Connectez-vous au système.
-3. Utilisez la barre de navigation pour accéder à la liste des produits ou pour ajouter un nouveau produit.
-4. Pour ajouter un produit, remplissez le formulaire sur la page "Ajouter un Produit".
-5. Visualisez tous les produits sur la page "Liste des Produits".
+1. Visitez la page d'accueil pour voir une description du projet.
+2. Inscrivez-vous en utilisant l'inscription locale ou via GitHub.
+3. Connectez-vous au système.
+4. Utilisez la barre de navigation pour accéder à la liste des produits, ajouter un nouveau produit, ou voir votre profil utilisateur.
+5. Pour ajouter un produit, remplissez le formulaire sur la page "Ajouter un Produit".
+6. Visualisez tous les produits sur la page "Liste des Produits".
+7. Consultez vos informations utilisateur sur la page "Profil Utilisateur".
 
 ## Améliorations Futures
 
