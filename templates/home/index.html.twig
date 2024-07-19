@@ -39,9 +39,11 @@
         <li>View list of all products</li>
         <li>Data persistence in MySQL and JSON</li>
     </ul>
-    <div>
-        <a href="{{ path('app_register') }}" class="btn">Register</a>
-        <a href="{{ path('app_login') }}" class="btn">Login</a>
-    </div>
+    {% if not app.user %}
+        <div>
+            <a href="{{ path('app_register') }}" class="btn">Register</a>
+            <a href="{{ path('app_login') }}" class="btn">Login</a>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

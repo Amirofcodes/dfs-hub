@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User Profile{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+    .user-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .user-info {
+        margin-bottom: 20px;
+    }
+    .user-info p {
+        margin: 10px 0;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="user-container">
+    <h1>User Profile</h1>
+    <div class="user-info">
+        <p><strong>Email:</strong> {{ user.email }}</p>
+        {% if user.githubId %}
+            <p><strong>GitHub ID:</strong> {{ user.githubId }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

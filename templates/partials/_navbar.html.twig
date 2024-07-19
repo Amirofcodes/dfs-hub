@@ -3,6 +3,7 @@
     {% if app.user %}
         <a href="{{ path('product_index') }}" style="color: white; text-decoration: none; margin-right: 15px;">Products</a>
         <a href="{{ path('product_new') }}" style="color: white; text-decoration: none; margin-right: 15px;">Add Product</a>
+        <a href="{{ path('app_user') }}" style="color: white; text-decoration: none; margin-right: 15px;">User Profile</a>
         <a href="{{ path('app_logout') }}" style="color: white; text-decoration: none;">Logout</a>
     {% else %}
         <a href="{{ path('app_login') }}" style="color: white; text-decoration: none; margin-right: 15px;">Login</a>
