@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome to ProductMNG{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style>
+    .home-container {
+        text-align: center;
+        max-width: 600px;
+        margin: 50px auto;
+    }
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        background-color: #87CEEB;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .btn:hover {
+        background-color: #5F9EA0;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="home-container">
+    <h1>Welcome to ProductMNG</h1>
+    <p>
+        ProductMNG is a Symfony-based product management system. It allows users to add new products
+        and view a list of all products. The system offers both local authentication and GitHub authentication.
+    </p>
+    <h2>Features:</h2>
+    <ul style="list-style-type: none; padding: 0;">
+        <li>User authentication (local and GitHub)</li>
+        <li>Add new products</li>
+        <li>View list of all products</li>
+        <li>Data persistence in MySQL and JSON</li>
+    </ul>
+    <div>
+        <a href="{{ path('app_register') }}" class="btn">Register</a>
+        <a href="{{ path('app_login') }}" class="btn">Login</a>
+    </div>
+</div>
+{% endblock %}

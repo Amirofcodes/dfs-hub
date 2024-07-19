@@ -1,5 +1,11 @@
-<nav style="background-color: #87CEEB; padding: 10px;">
-    <a href="{{ path('product_index') }}" style="color: white; text-decoration: none; margin-right: 15px;">Products</a>
-    <a href="{{ path('product_new') }}" style="color: white; text-decoration: none; margin-right: 15px;">Add Product</a>
-    <a href="{{ path('app_logout') }}" style="color: white; text-decoration: none;">Logout</a>
+<nav style="background-color: #87CEEB; padding: 10px; text-align: center;">
+    <a href="{{ path('app_home') }}" style="color: white; text-decoration: none; margin-right: 15px;">Home</a>
+    {% if app.user %}
+        <a href="{{ path('product_index') }}" style="color: white; text-decoration: none; margin-right: 15px;">Products</a>
+        <a href="{{ path('product_new') }}" style="color: white; text-decoration: none; margin-right: 15px;">Add Product</a>
+        <a href="{{ path('app_logout') }}" style="color: white; text-decoration: none;">Logout</a>
+    {% else %}
+        <a href="{{ path('app_login') }}" style="color: white; text-decoration: none; margin-right: 15px;">Login</a>
+        <a href="{{ path('app_register') }}" style="color: white; text-decoration: none;">Register</a>
+    {% endif %}
 </nav>
