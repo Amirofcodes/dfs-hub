@@ -32,6 +32,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private ?string $githubId = null;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private ?string $profilePicture = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -110,6 +113,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGithubId(?string $githubId): self
     {
         $this->githubId = $githubId;
+
+        return $this;
+    }
+
+    public function getProfilePicture(): ?string
+    {
+        return $this->profilePicture;
+    }
+
+    public function setProfilePicture(?string $profilePicture): self
+    {
+        $this->profilePicture = $profilePicture;
 
         return $this;
     }

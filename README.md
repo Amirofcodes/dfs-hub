@@ -4,7 +4,7 @@ First Symfony project
 
 # Système de Gestion de Produits
 
-Ce projet est un Système de Gestion de Produits construit avec Symfony 6. Il permet aux utilisateurs authentifiés d'ajouter de nouveaux produits et de visualiser une liste de tous les produits. Le système offre maintenant une authentification locale ainsi qu'une authentification via GitHub.
+Ce projet est un Système de Gestion de Produits construit avec Symfony 6. Il permet aux utilisateurs authentifiés d'ajouter de nouveaux produits et de visualiser une liste de tous les produits. Le système offre une authentification locale ainsi qu'une authentification via GitHub.
 
 ## Fonctionnalités
 
@@ -21,6 +21,7 @@ Ce projet est un Système de Gestion de Produits construit avec Symfony 6. Il pe
   - Sauvegarde supplémentaire des produits dans un fichier JSON
 - Profil utilisateur :
   - Page de profil affichant les informations de l'utilisateur
+  - Fonctionnalité d'upload et d'affichage de photo de profil
 
 ## Nouvelles Fonctionnalités
 
@@ -28,6 +29,7 @@ Ce projet est un Système de Gestion de Produits construit avec Symfony 6. Il pe
 - Style cohérent pour les pages de connexion et d'inscription
 - Barre de navigation adaptative pour une navigation facile entre les pages
 - Page d'accueil adaptative qui change en fonction de l'état de connexion de l'utilisateur
+- Ajout et affichage de photo de profil pour les utilisateurs
 
 ## Structure du Projet
 
@@ -38,6 +40,8 @@ productMng/
 │       ├── security.yaml
 │       └── knpu_oauth2_client.yaml
 ├── public/
+│   └── uploads/
+│       └── profile_pictures/
 ├── src/
 │   ├── Controller/
 │   │   ├── ProductController.php
@@ -84,7 +88,7 @@ productMng/
 1. **Entités** :
 
    - `Product.php` : Représente un produit avec ses propriétés.
-   - `User.php` : Représente un utilisateur du système, incluant un champ pour l'ID GitHub.
+   - `User.php` : Représente un utilisateur du système, incluant des champs pour l'ID GitHub et la photo de profil.
 
 2. **Contrôleurs** :
 
@@ -93,7 +97,7 @@ productMng/
    - `SecurityController.php` : Gère la connexion et la déconnexion locales.
    - `GitHubController.php` : Gère le processus de connexion via GitHub.
    - `HomeController.php` : Gère l'affichage de la page d'accueil.
-   - `UserController.php` : Gère l'affichage du profil utilisateur.
+   - `UserController.php` : Gère l'affichage et la mise à jour du profil utilisateur, y compris l'upload de photo de profil.
 
 3. **Formulaires** :
 
@@ -124,8 +128,9 @@ productMng/
    ```
 5. Créez la base de données : `php bin/console doctrine:database:create`
 6. Appliquez les migrations : `php bin/console doctrine:migrations:migrate`
-7. Démarrez le serveur : `php -S localhost:8000 -t public`
-8. Accédez à `http://localhost:8000` dans votre navigateur.
+7. Assurez-vous que le dossier `public/uploads/profile_pictures` existe et a les permissions appropriées.
+8. Démarrez le serveur : `symfony server:start`
+9. Accédez à `http://localhost:8000` dans votre navigateur.
 
 ## Utilisation
 
@@ -135,7 +140,7 @@ productMng/
 4. Utilisez la barre de navigation pour accéder à la liste des produits, ajouter un nouveau produit, ou voir votre profil utilisateur.
 5. Pour ajouter un produit, remplissez le formulaire sur la page "Ajouter un Produit".
 6. Visualisez tous les produits sur la page "Liste des Produits".
-7. Consultez vos informations utilisateur sur la page "Profil Utilisateur".
+7. Consultez et mettez à jour vos informations utilisateur sur la page "Profil Utilisateur", y compris l'ajout d'une photo de profil.
 
 ## Améliorations Futures
 
@@ -146,3 +151,4 @@ productMng/
 - Implémentation d'un système de recherche de produits.
 - Ajout de rôles utilisateurs (ex: administrateur, éditeur).
 - Intégration d'autres fournisseurs d'authentification OAuth (ex: Google, Facebook).
+- Amélioration de la gestion des photos de profil (redimensionnement, recadrage, etc.).

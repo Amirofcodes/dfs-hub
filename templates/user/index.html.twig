@@ -18,17 +18,43 @@
     .user-info p {
         margin: 10px 0;
     }
+    .profile-picture {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
 </style>
 {% endblock %}
 
 {% block body %}
 <div class="user-container">
     <h1>User Profile</h1>
+    
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% if user.profilePicture %}
+        <img src="{{ asset('uploads/profile_pictures/' ~ user.profilePicture) }}" alt="Profile Picture" class="profile-picture">
+    {% else %}
+        <p>No profile picture uploaded yet.</p>
+    {% endif %}
+
     <div class="user-info">
         <p><strong>Email:</strong> {{ user.email }}</p>
         {% if user.githubId %}
             <p><strong>GitHub ID:</strong> {{ user.githubId }}</p>
         {% endif %}
     </div>
+
+    <h2>Upload Profile Picture</h2>
+    <form action="{{ path('app_user_upload_profile_picture') }}" method="post" enctype="multipart/form-data">
+        <input type="file" name="profile_picture" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
 </div>
 {% endblock %}
