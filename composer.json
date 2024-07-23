@@ -1,4 +1,6 @@
 {
+    "name": "it-akademy/dfs-hub",
+    "description": "A comprehensive learning platform for IT-Akademy students focusing on the DFS curriculum and RNCP certification",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
