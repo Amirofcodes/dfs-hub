@@ -1,154 +1,81 @@
-# ProductMNG_sy
+# DFS HUB
 
-First Symfony project
+DFS HUB is a comprehensive learning platform designed for IT-Akademy students, focusing on the Développeur Full Stack (DFS) curriculum and RNCP certification resources. This project is developed as part of the RNCP certification process.
 
-# Système de Gestion de Produits
+## Project Overview
 
-Ce projet est un Système de Gestion de Produits construit avec Symfony 6. Il permet aux utilisateurs authentifiés d'ajouter de nouveaux produits et de visualiser une liste de tous les produits. Le système offre une authentification locale ainsi qu'une authentification via GitHub.
+DFS HUB aims to provide a centralized platform for DFS students to access learning resources, track their progress, and prepare for RNCP certification. The platform is built with a focus on modern web development practices and technologies.
 
-## Fonctionnalités
+## Key Features
 
-- Authentification utilisateur :
-  - Inscription locale avec email et mot de passe
-  - Connexion locale
-  - Inscription et connexion via GitHub
-  - Déconnexion
-- Gestion des produits :
-  - Ajout de nouveaux produits
-  - Liste de tous les produits
-- Persistance des données :
-  - Base de données MySQL pour les utilisateurs et les produits
-  - Sauvegarde supplémentaire des produits dans un fichier JSON
-- Profil utilisateur :
-  - Page de profil affichant les informations de l'utilisateur
-  - Fonctionnalité d'upload et d'affichage de photo de profil
+- User Authentication (Local and GitHub OAuth)
+- User Profiles with Learning Activity Tracking
+- Learning Resource Management (Courses, Tutorials, Articles)
+- RNCP Certification Information and Resources
+- Personalized Learning Paths
+- Q&A Section
+- Real-time Collaboration
 
-## Nouvelles Fonctionnalités
+## Technologies Used
 
-- Intégration de l'authentification GitHub
-- Style cohérent pour les pages de connexion et d'inscription
-- Barre de navigation adaptative pour une navigation facile entre les pages
-- Page d'accueil adaptative qui change en fonction de l'état de connexion de l'utilisateur
-- Ajout et affichage de photo de profil pour les utilisateurs
+- **Backend Framework**: Symfony 6.2
+- **Database**: MySQL
+- **ORM**: Doctrine
+- **Frontend**: Twig templating engine, JavaScript
+- **Authentication**: Symfony Security, KnpU OAuth2 Client Bundle
+- **API**: RESTful API with Symfony
+- **Real-time Features**: WebSockets (planned)
+- **Search**: Elasticsearch (planned)
+- **Caching**: Redis (planned)
+- **Testing**: PHPUnit
 
-## Structure du Projet
+## Technical Details
 
-```
-productMng/
-├── config/
-│   └── packages/
-│       ├── security.yaml
-│       └── knpu_oauth2_client.yaml
-├── public/
-│   └── uploads/
-│       └── profile_pictures/
-├── src/
-│   ├── Controller/
-│   │   ├── ProductController.php
-│   │   ├── RegistrationController.php
-│   │   ├── SecurityController.php
-│   │   ├── GitHubController.php
-│   │   ├── HomeController.php
-│   │   └── UserController.php
-│   ├── Entity/
-│   │   ├── Product.php
-│   │   └── User.php
-│   ├── Form/
-│   │   ├── ProductType.php
-│   │   └── RegistrationFormType.php
-│   ├── Repository/
-│   │   ├── ProductRepository.php
-│   │   └── UserRepository.php
-│   ├── Security/
-│   │   ├── AppCustomAuthenticator.php
-│   │   └── GitHubAuthenticator.php
-│   └── Service/
-│       └── JsonProductPersister.php
-├── templates/
-│   ├── product/
-│   │   ├── index.html.twig
-│   │   └── new.html.twig
-│   ├── registration/
-│   │   └── register.html.twig
-│   ├── security/
-│   │   └── login.html.twig
-│   ├── user/
-│   │   └── index.html.twig
-│   ├── home/
-│   │   └── index.html.twig
-│   ├── base.html.twig
-│   └── partials/
-│       └── _navbar.html.twig
-└── var/
-    └── products.json
-```
+### Backend Architecture
 
-## Composants Clés
+- MVC architecture using Symfony's best practices
+- Doctrine ORM for database interactions
+- Custom services for business logic
+- Event listeners for specific application events
 
-1. **Entités** :
+### Security Measures
 
-   - `Product.php` : Représente un produit avec ses propriétés.
-   - `User.php` : Représente un utilisateur du système, incluant des champs pour l'ID GitHub et la photo de profil.
+- Symfony Security for authentication and authorization
+- CSRF protection
+- Password hashing using bcrypt
+- OAuth2 integration for GitHub login
 
-2. **Contrôleurs** :
+### Database Design
 
-   - `ProductController.php` : Gère l'ajout et la liste des produits.
-   - `RegistrationController.php` : Gère l'inscription des utilisateurs.
-   - `SecurityController.php` : Gère la connexion et la déconnexion locales.
-   - `GitHubController.php` : Gère le processus de connexion via GitHub.
-   - `HomeController.php` : Gère l'affichage de la page d'accueil.
-   - `UserController.php` : Gère l'affichage et la mise à jour du profil utilisateur, y compris l'upload de photo de profil.
+- Relational database schema optimized for learning resource management
+- Entities: User, Course, Lesson, Question, Answer, UserProgress
 
-3. **Formulaires** :
+### API Design
 
-   - `ProductType.php` : Formulaire pour ajouter/éditer un produit.
-   - `RegistrationFormType.php` : Formulaire d'inscription locale.
+- RESTful API endpoints for resource management
+- JWT authentication for API access
 
-4. **Services** :
+### Performance Optimizations
 
-   - `JsonProductPersister.php` : Sauvegarde les produits dans un fichier JSON.
+- Doctrine query optimization
+- Lazy loading of related entities
+- Caching strategies (to be implemented)
 
-5. **Sécurité** :
+### Testing Strategy
 
-   - `AppCustomAuthenticator.php` : Gère le processus d'authentification locale.
-   - `GitHubAuthenticator.php` : Gère le processus d'authentification via GitHub.
+- Unit tests for critical business logic
+- Functional tests for controllers and API endpoints
+- Integration tests for database interactions
 
-6. **Templates** :
-   - Templates Twig pour le rendu des pages produits, connexion, inscription, accueil, profil utilisateur et la barre de navigation.
+## RNCP Certification Relevance
 
-## Configuration et Exécution du Projet
+This project demonstrates competencies in:
 
-1. Clonez le dépôt.
-2. Installez les dépendances : `composer install`
-3. Configurez votre base de données dans le fichier `.env`.
-4. Configurez vos clés GitHub OAuth dans le fichier `.env` :
-   ```
-   GITHUB_CLIENT_ID=votre_client_id
-   GITHUB_CLIENT_SECRET=votre_client_secret
-   ```
-5. Créez la base de données : `php bin/console doctrine:database:create`
-6. Appliquez les migrations : `php bin/console doctrine:migrations:migrate`
-7. Assurez-vous que le dossier `public/uploads/profile_pictures` existe et a les permissions appropriées.
-8. Démarrez le serveur : `symfony server:start`
-9. Accédez à `http://localhost:8000` dans votre navigateur.
+1. Designing and modeling web applications
+2. Developing the frontend and backend of web applications
+3. Implementing database design and management
+4. Ensuring application security
+5. Integrating third-party services (OAuth)
+6. Applying best practices in software development
 
-## Utilisation
-
-1. Visitez la page d'accueil pour voir une description du projet.
-2. Inscrivez-vous en utilisant l'inscription locale ou via GitHub.
-3. Connectez-vous au système.
-4. Utilisez la barre de navigation pour accéder à la liste des produits, ajouter un nouveau produit, ou voir votre profil utilisateur.
-5. Pour ajouter un produit, remplissez le formulaire sur la page "Ajouter un Produit".
-6. Visualisez tous les produits sur la page "Liste des Produits".
-7. Consultez et mettez à jour vos informations utilisateur sur la page "Profil Utilisateur", y compris l'ajout d'une photo de profil.
-
-## Améliorations Futures
-
-- Implémentation de la modification et de la suppression des produits.
-- Ajout de pagination à la liste des produits.
-- Amélioration de la validation des données.
-- Ajout de tests unitaires et fonctionnels.
-- Implémentation d'un système de recherche de produits.
-- Ajout de rôles utilisateurs (ex: administrateur, éditeur).
-- Intégration d'autres fournisseurs d'authentification OAuth (ex: Google, Facebook).
-- Amélioration de la gestion des photos de profil (redimensionnement, recadrage, etc.).
+By developing DFS HUB, I aim to showcase my skills as a Full Stack Developer and meet the requirements for RNCP certification.
