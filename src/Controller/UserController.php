@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -72,6 +73,8 @@ class UserController extends AbstractController
                 );
             } catch (FileException $e) {
                 // Handle exception if something happens during file upload
+                $this->addFlash('error', 'An error occurred while uploading your profile picture.');
+                return $this->redirectToRoute('app_user');
             }
 
             $user->setProfilePicture($newFilename);
