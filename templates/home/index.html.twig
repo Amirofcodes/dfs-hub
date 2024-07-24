@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Welcome to ProductMNG{% endblock %}
+{% block title %}Welcome to DFS HUB{% endblock %}
 
 {% block stylesheets %}
 {{ parent() }}
 <style>
     .home-container {
         text-align: center;
-        max-width: 600px;
+        max-width: 800px;
         margin: 50px auto;
     }
     .btn {
@@ -22,28 +22,37 @@
     .btn:hover {
         background-color: #5F9EA0;
     }
+    .feature-list {
+        text-align: left;
+        display: inline-block;
+    }
 </style>
 {% endblock %}
 
 {% block body %}
 <div class="home-container">
-    <h1>Welcome to ProductMNG</h1>
+    <h1>Welcome to DFS HUB</h1>
     <p>
-        ProductMNG is a Symfony-based product management system. It allows users to add new products
-        and view a list of all products. The system offers both local authentication and GitHub authentication.
+        DFS HUB is a comprehensive learning platform designed for IT-Akademy students, 
+        focusing on the Développeur Full Stack (DFS) curriculum and RNCP certification resources.
     </p>
-    <h2>Features:</h2>
-    <ul style="list-style-type: none; padding: 0;">
-        <li>User authentication (local and GitHub)</li>
-        <li>Add new products</li>
-        <li>View list of all products</li>
-        <li>Data persistence in MySQL and JSON</li>
+    <h2>Key Features:</h2>
+    <ul class="feature-list">
+        <li>User Authentication (Local and GitHub OAuth)</li>
+        <li>User Profiles with Learning Activity Tracking</li>
+        <li>Learning Resource Management</li>
+        <li>RNCP Certification Information and Resources</li>
+        <li>Admin Panel for User Management</li>
+        <li>Role-based Access Control</li>
     </ul>
     {% if not app.user %}
         <div>
             <a href="{{ path('app_register') }}" class="btn">Register</a>
             <a href="{{ path('app_login') }}" class="btn">Login</a>
         </div>
+    {% else %}
+        <p>Welcome back, {{ app.user.email }}!</p>
+        <a href="{{ path('app_user') }}" class="btn">My Profile</a>
     {% endif %}
 </div>
 {% endblock %}
