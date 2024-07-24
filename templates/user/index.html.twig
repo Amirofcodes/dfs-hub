@@ -45,10 +45,13 @@
     {% endif %}
 
     <div class="user-info">
-        <p><strong>Email:</strong> {{ user.email }}</p>
+        {{ form_start(form) }}
+        {{ form_row(form.email) }}
         {% if user.githubId %}
             <p><strong>GitHub ID:</strong> {{ user.githubId }}</p>
         {% endif %}
+        {{ form_row(form.submit) }}
+        {{ form_end(form) }}
     </div>
 
     <h2>Upload Profile Picture</h2>
@@ -56,5 +59,20 @@
         <input type="file" name="profile_picture" accept="image/*" required>
         <button type="submit">Upload</button>
     </form>
+
+    <h2>Recent Activities</h2>
+    {% if activities|length > 0 %}
+        <ul>
+        {% for activity in activities %}
+            <li>
+                <strong>{{ activity.activityType }}</strong>: 
+                {{ activity.description }} 
+                <small>({{ activity.createdAt|date('Y-m-d H:i:s') }})</small>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No recent activities.</p>
+    {% endif %}
 </div>
 {% endblock %}
