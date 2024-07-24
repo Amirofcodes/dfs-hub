@@ -15,6 +15,7 @@ DFS HUB aims to provide a centralized platform for DFS students to access learni
 - Personalized Learning Paths
 - Q&A Section
 - Real-time Collaboration
+- Admin Panel for User Management
 
 ## Technologies Used
 
@@ -44,11 +45,12 @@ DFS HUB aims to provide a centralized platform for DFS students to access learni
 - CSRF protection
 - Password hashing using bcrypt
 - OAuth2 integration for GitHub login
+- Role-based access control (ROLE_ADMIN, ROLE_MENTOR, ROLE_STUDENT)
 
 ### Database Design
 
 - Relational database schema optimized for learning resource management
-- Entities: User, Course, Lesson, Question, Answer, UserProgress
+- Entities: User, Course, Lesson, Question, Answer, UserProgress, UserActivity
 
 ### API Design
 
@@ -67,6 +69,14 @@ DFS HUB aims to provide a centralized platform for DFS students to access learni
 - Functional tests for controllers and API endpoints
 - Integration tests for database interactions
 
+## Recent Updates
+
+- Implemented an admin panel for user management
+- Enhanced user roles system (ROLE_ADMIN, ROLE_MENTOR, ROLE_STUDENT)
+- Added user activity tracking
+- Improved security configuration and access control
+- Created a dashboard for user profile and activity display
+
 ## RNCP Certification Relevance
 
 This project demonstrates competencies in:
@@ -77,5 +87,6 @@ This project demonstrates competencies in:
 4. Ensuring application security
 5. Integrating third-party services (OAuth)
 6. Applying best practices in software development
+7. Implementing user role management and access control
 
-By developing DFS HUB, I aim to showcase my skills as a Full Stack Developer and meet the requirements for RNCP certification.
+By developing DFS HUB, we aim to showcase skills as Full Stack Developers and meet the requirements for RNCP certification.
