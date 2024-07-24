@@ -15,6 +15,7 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 #[Route('/user')]
+#[IsGranted('ROLE_USER')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user', methods: ['GET', 'POST'])]
