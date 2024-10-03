@@ -1,20 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LearningResourceController!{% endblock %}
+{% block title %}Learning Resources{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Learning Resources</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Type</th>
+            <th>Author</th>
+            <th>Created At</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for learning_resource in learning_resources %}
+            <tr>
+                <td>{{ learning_resource.title }}</td>
+                <td>{{ learning_resource.type }}</td>
+                <td>{{ learning_resource.author.email }}</td>
+                <td>{{ learning_resource.createdAt ? learning_resource.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_learning_resource_show', {'id': learning_resource.id}) }}">Show</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <a href="{{ path('app_learning_resource_edit', {'id': learning_resource.id}) }}">Edit</a>
+                    {% endif %}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">No learning resources found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Users/jd/Workspace/IT-Akademy/dfs_hub/src/Controller/LearningResourceController.php</code></li>
-        <li>Your template at <code>/Users/jd/Workspace/IT-Akademy/dfs_hub/templates/learning_resource/index.html.twig</code></li>
-    </ul>
-</div>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('app_learning_resource_new') }}">Create new Learning Resource</a>
+    {% endif %}
 {% endblock %}
