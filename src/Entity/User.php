@@ -40,10 +40,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: UserActivity::class, orphanRemoval: true)]
     private Collection $activities;
 
+    /**
+     * @var Collection<int, LearningResource>
+     */
+    #[ORM\OneToMany(targetEntity: LearningResource::class, mappedBy: 'author', orphanRemoval: true)]
+    private Collection $learningResources;
+
     public function __construct()
     {
         $this->activities = new ArrayCollection();
         $this->roles = ['ROLE_STUDENT']; // Default role
+        $this->learningResources = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -185,6 +192,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($activity->getUser() === $this) {
                 $activity->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LearningResource>
+     */
+    public function getLearningResources(): Collection
+    {
+        return $this->learningResources;
+    }
+
+    public function addLearningResource(LearningResource $learningResource): static
+    {
+        if (!$this->learningResources->contains($learningResource)) {
+            $this->learningResources->add($learningResource);
+            $learningResource->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLearningResource(LearningResource $learningResource): static
+    {
+        if ($this->learningResources->removeElement($learningResource)) {
+            // set the owning side to null (unless already changed)
+            if ($learningResource->getAuthor() === $this) {
+                $learningResource->setAuthor(null);
             }
         }
 

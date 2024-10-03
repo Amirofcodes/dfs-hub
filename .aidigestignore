@@ -1,0 +1,71 @@
+# Symfony specific
+/var/
+/vendor/
+/public/bundles/
+/public/uploads/
+/var/cache/*
+/var/log/*
+/var/sessions/*
+
+# Configuration and environment files
+/.env
+/.env.local
+/.env.local.php
+/.env.*.local
+
+# Composer files
+/composer.phar
+/composer.lock
+/symfony.lock
+
+# PHPUnit
+/phpunit.xml
+/.phpunit.result.cache
+
+# Build and deploy related
+/build/
+/deploy/
+
+# Frontend related
+/node_modules/
+/public/build/
+/npm-debug.log
+/yarn-error.log
+
+# IDE and editor files
+/.idea/
+/.vscode/
+*.sublime-project
+*.sublime-workspace
+*.komodoproject
+.komodotools/
+.project
+.buildpath
+.settings/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Backup files
+*~
+*.bak
+*.swp
+
+# Other common ignore patterns
+*.log
+*.sql
+*.sqlite
+*.tmp
+*.temp
+
+# Symfony specific files that might contain sensitive information
+/config/secrets/prod/prod.decrypt.private.php
+
+# Custom application files (adjust as needed)
+/public/uploads/profile_pictures/
