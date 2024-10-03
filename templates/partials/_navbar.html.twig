@@ -1,8 +1,7 @@
 <nav style="background-color: #87CEEB; padding: 10px; text-align: center;">
     <a href="{{ path('app_home') }}" style="color: white; text-decoration: none; margin-right: 15px;">Home</a>
     {% if app.user %}
-        <a href="{{ path('product_index') }}" style="color: white; text-decoration: none; margin-right: 15px;">Products</a>
-        <a href="{{ path('product_new') }}" style="color: white; text-decoration: none; margin-right: 15px;">Add Product</a>
+        <a href="{{ path('app_learning_resource_index') }}" style="color: white; text-decoration: none; margin-right: 15px;">Learn</a>
         <a href="{{ path('app_user') }}" style="color: white; text-decoration: none; margin-right: 15px;">User Profile</a>
         {% if is_granted('ROLE_ADMIN') %}
             <a href="{{ path('app_admin_index') }}" style="color: white; text-decoration: none; margin-right: 15px;">Admin Panel</a>

@@ -57,3 +57,4 @@ Thumbs.db
 
 # Ignore Symfony flex auto-generated recipes
 /config/bootstrap.php
+/public/uploads/learning_resources
